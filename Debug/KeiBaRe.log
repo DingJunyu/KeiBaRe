@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  Horse.cpp
+  KeiBaRe.cpp
+  player.cpp
+  Runway.cpp
+  コードを生成中...
+c:\users\gmb_10\source\repos\keibare\horse.cpp(61): warning C4715: 'Horse::Query': 値を返さないコントロール パスがあります。
+  KeiBaRe.vcxproj -> C:\Users\gmb_10\source\repos\KeiBaRe\Debug\KeiBaRe.exe

@@ -1,0 +1,17 @@
+#pragma once
+
+#define NAME_NUMBER 33
+#define HORSE_NUMBER 16
+#define INIF_ACCELERATION 3
+#define INIF_MST 15
+#define STANDARD_STATUS 60
+#define TRACK_LONG 1500
+#define TRACK_MEDIUM 1000
+#define TRACK_SHORT 500
+#define SPEED_UP_LEVEL 4
+#define WEIGHT_TO_FST_10 2
+#define WEIGHT_TO_ACC 1
+#define STATUS_TO_FST 1
+#define STATUS_TO_ACC 1
+#define SPEED_DOWN_WITH_FATIGUE 2
+#define LENGTH_SHOW 60
