@@ -3,6 +3,7 @@
 
 Runway& Runway::CopyFromHorse(std::string Nam,
 	double Spe, double Sta, double Fat, double Wei, double Len) {
+	/*Horseから必要なデータを受ける*/
 	HorseHere.Name = Nam;
 	HorseHere.ShortName = HorseHere.Name.substr(0, 2);
 	HorseHere.Speed = Spe;
@@ -14,6 +15,7 @@ Runway& Runway::CopyFromHorse(std::string Nam,
 }
 
 Runway& Runway::Inif() {
+	/*トラックの状態を更新*/
 	CurrentSpeed = 0;
 	AlreadyPass = 0;
 	FullSpeedTime = 0;
@@ -46,22 +48,25 @@ Runway& Runway::Running() {
 
 	if (FullSpeedTime < MaxFST && CurrentSpeed > HorseHere.Speed)
 		CurrentSpeed = HorseHere.Speed;
+	//速度は最大速度に超えない
 
 	if (FullSpeedTime >= MaxFST && CurrentSpeed >
 		MaxSpeedWhenTired)
 		CurrentSpeed = MaxSpeedWhenTired;
+	//疲れった時の最大速度
 
 	//最大速度と疲労の関係
-	if ((rand() % 100 + 1) <= HorseHere.Fatigue&&CurrentSpeed >=
-		HorseHere.Speed - SPEED_MIN)
+	if ((rand() % 100 + 1) <= HorseHere.Fatigue && 
+		CurrentSpeed >= HorseHere.Speed - SPEED_MIN)
 		CurrentSpeed -= SPEED_DOWN_WITH_FATIGUE;
 
-	++FullSpeedTime;
+	++FullSpeedTime;//疲れ値を増やす
 	AlreadyPass += CurrentSpeed;//走った距離を記録
 	return *this;
 }
 
 int Runway::EndofMatch() {
+	/*終点に着いたら走った距離を返す*/
 	if (AlreadyPass >= Length)
 		return (int)(AlreadyPass - Length);
 	else

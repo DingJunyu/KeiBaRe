@@ -1,15 +1,17 @@
 #include"stdafx.h"
 
 Horse& Horse::Initiaize(std::string GivenName) {//馬のデータを初期化
+	//define値通り渡す
 	Speed = INIF_SPEED;
 	Weight = INIF_WEIGHT;
 	Status = INIF_STATUS;
 	MaxLevel = INIF_MAXLEVEL;
-	Level = 1;
+	Level = INIF_LEVEL;
 	Fatigue = INIF_FATIGUE;
-	Odds = 1;
+	Odds = INIF_ODDS;
 
-	Name = GivenName;
+	Name = GivenName;//渡された文字列を保存
+	/*初期データ全部ランダムに変わる*/
 	Speed += Random(CHAN_SPEED);
 	Weight += Random(CHAN_WEIGHT);
 	Status += Random(CHAN_STATUS);
@@ -20,36 +22,36 @@ Horse& Horse::Initiaize(std::string GivenName) {//馬のデータを初期化
 
 Horse& Horse::LevelUp() {
 	++Level;
-	Speed += SPEED_PER_LEVEL;
+	Speed += SPEED_PER_LEVEL;//スピードは上がる
 	Weight += Random(WEIGHT_CHAN_PER_LEVEL);
-	Status += STATUS_PER_LEVEL;
-
+	//重量はランダムに変わる(下がることがある)
+	Status += STATUS_PER_LEVEL;//テンションは上がる
 	return *this;
 }
 
 Horse& Horse::Record(bool Win) {
-	if (Win) {
+	if (Win) {//勝場合
 		++Winned;
-		Status -= STATUS_DOWN_WIN;
-		if (Status <= 0)
-			Status = 0;
-		Odds -= ODDS_PER_WIN;
-		if (Odds <= 0)
-			Odds = 0.1;
+		Status -= STATUS_DOWN_WIN;//テンションが下がる
+		if (Status < STATUS_MIN)//最小値を超えないよう
+			Status = STATUS_MIN;
+		Odds -= ODDS_PER_WIN;//配当率が下がる
+		if (Odds < ODDS_MIN)//最小値を超えないよう
+			Odds = ODDS_MIN;
 	}
-	else {
-		Status += STATUS_UP_LOSE;
-		if (Status >= 100)
-			Status = 0;
-		Odds += ODDS_PER_LOSE;
+	else {//負けた場合
+		Status += STATUS_UP_LOSE;//テンションが上がる
+		if (Status > STATUS_MAX)//最大値を超えないよう
+			Status = STATUS_MAX;
+		Odds += ODDS_PER_LOSE;//配当率が上がる
 	}
 	++Played;
-	if (Played > Level * 5 && Level <= MaxLevel)
+	if (Played > Level * 5 && Level <= MaxLevel)//５回毎にレーベルが上がる
 		LevelUp();
 	return *this;
 }
 
-double& Horse::Query(int Num) {
+double& Horse::Query(int Num) {//トラックにデータを渡す用
 	switch (Num)
 	{
 	case SPEED:return Speed;
@@ -96,8 +98,10 @@ Horse& Horse::rest(bool Played) {
 		Fatigue -= FATIGUE_PER_REST;
 		Odds += ODDS_PER_REST;//休んだ馬の配当率が上がる
 	}
-	if (Fatigue < 0)
-		Fatigue = 0;
+	if (Fatigue < FATIGUE_MIN)
+		Fatigue = FATIGUE_MIN;
+	if (Fatigue > FATIGUE_MAX)
+		Fatigue = FATIGUE_MAX;
 	return *this;
 }
 
