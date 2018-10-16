@@ -69,16 +69,16 @@ int Runway::EndofMatch() {
 	/*終点に着いたら走った距離を返す*/
 	if (AlreadyPass >= Length)
 		return (int)(AlreadyPass - Length);
-	else
+	else//終点に着いた馬がいない時は-1を返す
 		return -1;
 }
 
 void Runway::Display() {
 	double Blocks;
-	Blocks = AlreadyPass / Length*LENGTH_SHOW;
+	Blocks = AlreadyPass / Length*LENGTH_SHOW;//表示する距離
 	if (Blocks >= LENGTH_SHOW)
 		Blocks = LENGTH_SHOW;//描く範囲越えない
-	for (int i = 0; i <= (int)Blocks; ++i)
+	for (int i = 0; i <= (int)Blocks; ++i)//走った距離を表示
 		printf("-");
 	std::cout << HorseHere.ShortName;
 

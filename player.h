@@ -14,8 +14,8 @@ public:
 	bool GameOverCheck();
 	void ShowChoice();
 private:
-	int Money;
+	int Money;//‚Á‚Ä‚é‚¨‹à
 	int BetNum;//“q‚¯‚½‚¨‹à
 	int Choice;//‘I‚ñ‚¾”n‚Ì”Ô†
-	int LowestBetMount;
+	int LowestBetMount;//Å’á“q‚¯‚é‹à
 };

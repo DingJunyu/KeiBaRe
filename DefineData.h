@@ -14,7 +14,7 @@
 #define INIF_SPEED 12
 #define INIF_WEIGHT 250
 #define INIF_STATUS 60
-#define INIF_FATIGUE 10//初期疲労値
+#define INIF_FATIGUE 0//初期疲労値
 #define INIF_MAXLEVEL 25
 #define INIF_ODDS 1
 #define INIF_LEVEL 1
@@ -30,7 +30,7 @@
 #define WEIGHT_CHAN_PER_LEVEL 10//重量
 
 //疲労値関係
-#define FATIGUE_PER_MATCH 10//参加による下がる
+#define FATIGUE_PER_MATCH 7//参加による下がる
 #define FATIGUE_PER_REST 15//参加しないによる上がる
 #define FATIGUE_MAX 100//最大値
 #define FATIGUE_MIN 0//最小値
@@ -38,8 +38,8 @@
 //テンション関係
 #define STANDARD_STATUS 60//標準値
 #define STATUS_UP_LOSE 2//失敗毎の変化
-#define STATUS_DOWN_WIN 8//勝利毎の変化
-#define STATUS_PER_REST 1//参加しない時
+#define STATUS_DOWN_WIN 14//勝利毎の変化
+#define STATUS_PER_REST 3//参加しない時
 #define STATUS_MAX 130//最大値
 #define STATUS_MIN 0//最小値
 
@@ -59,7 +59,7 @@
 #define WEIGHT_TO_ACC 0.05
 #define STATUS_TO_FST 0.2
 #define STATUS_TO_ACC 0.03
-#define SPEED_DOWN_WITH_FATIGUE 3//疲労値がたまるとスピードがランダム落とす
+#define SPEED_DOWN_WITH_FATIGUE 1.5//疲労値がたまるとスピードがランダム落とす
 #define SPEED_DOWN_WITH_FST 0.6
 #define SPEED_MIN 8//一番遅い速度と速度の差
 #define ACC_MIN 1//最小加速度
@@ -75,6 +75,7 @@
 //輸出関係
 #define FRAME_WAIT 20
 #define LENGTH_SHOW 61//Trackの長さ
+#define PLUS_SHOW 6
 
 //難易度関連
 #define DIFFICULTY_DIFFICULT 2000

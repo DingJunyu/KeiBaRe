@@ -30,11 +30,11 @@ public:
 
 private:
     HorseOnRunway HorseHere;
-	double Length;
-	double AlreadyPass;
-	double FullSpeedTime;
-	double Acceleration;
-	double MaxFST;
-	double CurrentSpeed;
-	double MaxSpeedWhenTired;
+	double Length;//トラックの長さ
+	double AlreadyPass;//走った距離
+	double FullSpeedTime;//全速で走った時間
+	double Acceleration;//加速度
+	double MaxFST;//最大全速で走った時間
+	double CurrentSpeed;//現在速度
+	double MaxSpeedWhenTired;//全速時間を越えた後の最大速度
 };

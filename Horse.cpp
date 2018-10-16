@@ -72,10 +72,11 @@ double Random(int Range) {
 }
 
 void Horse::Display() {
-	std::cout << Name << " 体重:"
-		<< Weight << "Kg テンション:"
+	std::cout << Name << " 重:"
+		<< Weight << "Kg テン:"
 		<< Status - INIF_STATUS << "% "
-		<< "配当率:" << Odds;
+		<< "配当率:" << Odds << " 履歴:"
+		<< Winned << "/" << Played;
 
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO bInfo;

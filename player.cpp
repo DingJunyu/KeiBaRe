@@ -23,6 +23,7 @@ void Player::InputBet() {
 Player& Player::Bet(int Num, int Mount) {
 	Choice = Num - 1;//”n‚Ì”Ô†‚Æ‘I‚ñ‚¾”Ô†‚ğ“ˆê‚·‚é‚½‚ß
 	BetNum = Mount;
+	Money -= Mount;
 
 	return *this;
 }
@@ -34,7 +35,6 @@ Player& Player::Contrast(int WinNum,double Odds) {
 			"‚ğ“¾‚Ü‚µ‚½" << std::endl;
 	}
 	else {
-		Money -= BetNum;
 		std::cout << "•‰‚¯‚Ü‚µ‚½B" << BetNum <<
 			"‚ª‚È‚­‚µ‚Ü‚µ‚½" << std::endl;
 	}
